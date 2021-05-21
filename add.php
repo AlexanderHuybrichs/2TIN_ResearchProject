@@ -37,9 +37,9 @@
         require_once('config.php');
         
         if(isset($_POST["userId"]) && isset($_POST['firstName']) && isset($_POST['lastName'])){
-            $userId = $_POST["userId"];
-            $firstName = $_POST['firstName'];
-            $lastName = $_POST['lastName'];
+            $userId = mysql_real_escape_string($_POST["userId"]);
+            $firstName = mysql_real_escape_string($_POST['firstName']);
+            $lastName = mysql_real_escape_string($_POST['lastName']);
 
             $insertQry = mysqli_query($conn,"INSERT INTO employees(emp_no, first_name, last_name) VALUES ('$userId', '$firstName', '$lastName')");
             if($insertQry)
